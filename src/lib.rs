@@ -25,7 +25,7 @@ use chrono::{Duration, NaiveDateTime, Timelike, Utc};
 use std::sync::Arc;
 
 /// Event fired when a specific time interval has passed
-#[derive(Message, Debug, Clone)]
+#[derive(Event, Debug, Clone)]
 pub struct ClockIntervalEvent {
     /// The interval that triggered this event
     pub interval: ClockInterval,
@@ -73,7 +73,7 @@ impl Plugin for InGameClockPlugin {
     fn build(&self, app: &mut App) {
         app.init_resource::<InGameClock>()
             .init_resource::<ClockIntervalTrackers>()
-            .add_message::<ClockIntervalEvent>()
+            .add_event::<ClockIntervalEvent>()
             .add_systems(Update, update_clock)
             .add_systems(Update, check_intervals);
     }
@@ -346,7 +346,7 @@ fn update_clock(mut clock: ResMut<InGameClock>, time: Res<Time>) {
 fn check_intervals(
     clock: Res<InGameClock>,
     mut trackers: ResMut<ClockIntervalTrackers>,
-    mut events: MessageWriter<ClockIntervalEvent>,
+    mut events: EventWriter<ClockIntervalEvent>,
 ) {
     if clock.paused {
         return;

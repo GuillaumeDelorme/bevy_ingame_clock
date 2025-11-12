@@ -87,7 +87,7 @@ struct EventLog {
 }
 
 fn handle_interval_events(
-    mut events: MessageReader<ClockIntervalEvent>,
+    mut events: EventReader<ClockIntervalEvent>,
     mut log: Local<EventLog>,
     active: Res<ActiveIntervals>,
 ) {

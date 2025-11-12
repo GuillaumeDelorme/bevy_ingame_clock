@@ -101,7 +101,7 @@ fn setup(mut commands: Commands) {
     commands.register_clock_interval(ClockInterval::Week);
 }
 
-fn handle_clock_events(mut events: MessageReader<ClockIntervalEvent>) {
+fn handle_clock_events(mut events: EventReader<ClockIntervalEvent>) {
     for event in events.read() {
         match event.interval {
             ClockInterval::Day => {
