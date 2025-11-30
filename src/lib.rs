@@ -237,6 +237,27 @@ impl InGameClock {
     pub fn set_speed(&mut self, speed: f32) {
         self.speed = speed;
     }
+    /// Sets the elapsed seconds directly.
+    /// 
+    /// This is primarily used for save/load functionality to restore the clock state
+    /// when loading a saved game. The elapsed seconds represent the total in-game time
+    /// that has passed since the start_datetime.
+    ///
+    /// # Examples
+    /// ```
+    /// # use bevy_ingame_clock::InGameClock;
+    /// let mut clock = InGameClock::new();
+    /// 
+    /// // Restore clock state from a saved game
+    /// clock.set_elapsed_seconds(3600.0); // Set to 1 hour of elapsed in-game time
+    /// 
+    /// let (hour, minute, second) = clock.current_time();
+    /// // Time will be start_datetime + 1 hour
+    /// ```
+    pub fn set_elapsed_seconds(&mut self, seconds: f64) {
+        self.elapsed_seconds = seconds;
+    }
+
 
     /// Sets the clock speed based on how many real-time seconds it takes for one in-game day to pass.
     /// Takes into account the calendar's seconds_per_day value.

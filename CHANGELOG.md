@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2025-11-30
+
+### Added
+- `set_elapsed_seconds(seconds)` method to programmatically set the clock's elapsed time
+  - Enables save/load systems to restore the exact in-game time when loading saved games
+  - Useful for any system that needs to synchronize the clock to a specific time state
+
 ## [0.2.0] - 2025-01-24
 
 ### Added
@@ -33,5 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InGameClockPlugin` for easy Bevy integration
 - Examples: basic, events, digital_clock
 
+[0.2.1]: https://github.com/don-matheo/bevy_ingame_clock/releases/tag/v0.2.1
 [0.2.0]: https://github.com/don-matheo/bevy_ingame_clock/releases/tag/v0.2.0
 [0.1.0]: https://github.com/don-matheo/bevy_ingame_clock/releases/tag/v0.1.0
